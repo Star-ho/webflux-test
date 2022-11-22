@@ -1,0 +1,11 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/fluxCoroutine
+    username: root
+    password: tjdgh123
+logging:
+  level:
+    org:
+      springframework:
+        r2dbc: DEBUG
+debug: true
