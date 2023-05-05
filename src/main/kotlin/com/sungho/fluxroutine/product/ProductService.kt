@@ -1,26 +1,21 @@
 package com.sungho.fluxroutine.product
 
-import kotlinx.coroutines.*
-import kotlinx.coroutines.reactive.awaitSingle
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.reactor.awaitSingle
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
-import java.math.BigDecimal
 
 
 @Component
 class ProductService(
     private val productRepository: ProductRepository,
 ) {
-    suspend fun getProductList(): List<Product> {
-        val product: List<Product> = productRepository.findAllProductList()
-        return product
-
+    suspend fun getProductList(): Flow<Product> {
+        return productRepository.findAllProductList()
     }
 
-    suspend fun getProductById(id:Long): Product {
-        val product: Product = productRepository.findById(id).awaitSingle()
-        return product
+    suspend fun getProductById(id: Long): Product {
+        return productRepository.findById(id).awaitSingle()
     }
 
     @Transactional

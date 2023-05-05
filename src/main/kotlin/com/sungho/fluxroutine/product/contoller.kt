@@ -1,5 +1,6 @@
 package com.sungho.fluxroutine.product
 
+import kotlinx.coroutines.flow.Flow
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,7 +16,7 @@ class ProductController(
     private val productService: ProductService
 ){
     @GetMapping
-    suspend fun getProductList(): List<Product> {
+    suspend fun getProductList(): Flow<Product> {
         return productService.getProductList()
     }
 
